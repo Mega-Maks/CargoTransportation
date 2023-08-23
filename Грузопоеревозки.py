@@ -19,7 +19,6 @@ if __name__ == "__main__":
         input_file[i] = input_file[i].split('\n')
         for j in range(len(input_file[i])):
             input_file[i][j] = input_file[i][j].split('\t')
-    #input_file = [[way.split('\t') for way in day.split('\n')] for day in input_file.split("\n\t\t\t\t\t\n")]
     for day_list in input_file:
         doc_count = len(day_list) + 1
         ex_val = class_and_funcs.Exel(day_list, act_val, document_number, organization, money_at_hour)
