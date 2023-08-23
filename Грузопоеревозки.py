@@ -3,20 +3,12 @@ import os
 import docx
 
 class_and_funcs.clear()
-"""
 organization = input('введите название организации ')
 if organization not in ["Нипигормаш", "Уралвзрывпром", "Байкал"]:
     raise ValueError("Неверное название организации, пожалуста введите одно из: Нипигормаш ; Уралвзрывпром ; Байкал")
 document_number = int(input('введите номер документа '))
 act_val = int(input('введите номер акта '))
-money_at_hour = int(input('введите количество денег зарабатываемое в час '))"""
-
-organization = "Уралвзрывпром"
-if organization not in ["Нипигормаш", "Уралвзрывпром", "Байкал"]:
-    raise ValueError("Неверное название организации, пожалуста введите одно из: Нипигормаш ; Уралвзрывпром ; Байкал")
-document_number = 14
-act_val = 7
-money_at_hour = 1500
+money_at_hour = int(input('введите количество денег зарабатываемое в час '))
 
 if __name__ == "__main__":
     os.chdir('/CargoTransportation/Грузоперевозки')
