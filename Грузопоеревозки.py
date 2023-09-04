@@ -52,8 +52,6 @@ if __name__ == "__main__":
         act_val += 1
         document_number += 1
         for way_list in day_list:
-            doc = docx.Document(
-                'C:\\Users\\Ryzhk\\PycharmProjects\\Грузоперевозки\\CargoTransportation\\Шаблон_dox.docx')
             docx_file = class_and_funcs.Docx(way_list, date, document_number, organization)
             docx_file.docx_writer()
             document_number += 1

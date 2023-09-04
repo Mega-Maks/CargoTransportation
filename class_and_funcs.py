@@ -45,6 +45,7 @@ class Docx:
         self.doc.tables[1].rows[8].cells[3].text = self.tons
         self.doc.tables[1].rows[8].cells[8].text = self.tons
         self.doc.tables[3].rows[28].cells[1].text = self.word_num()
+        self.doc.tables[3].rows[37].cells[1].text = dicts.organization_short_dict[self.organization]
 
         self.doc.save(
             f'C:\\Users\\Ryzhk\\Desktop\\{self.organization} архив\\' + str(self.doc_num) + '      ' + self.date + '.docx')
@@ -69,13 +70,9 @@ class Exel:
         # if len(self.list_with_str) != 5:
         # self.list_with_str = ['{Неверная дата}', "Неверная улица}", "Неверная улица}", "{Неверная сумма}", "{Неверные тонны}", "{Неверный груз}"]
         for i in self.list_with_str:
-            if not ((c != 0 and i[0] == "") or (c == 0 and (
-                    len(i[0]) == 10 and i[0][0:2].isdigit() and i[0][3:5].isdigit() and i[0][6:].isdigit() and i[0][
-                2] == "." and i[0][5] == "."))):
+            if not ((c != 0 and i[0] == "") or (c == 0 and (len(i[0]) == 10 and i[0][0:2].isdigit() and i[0][3:5].isdigit() and i[0][6:].isdigit() and i[0][2] == "." and i[0][5] == "."))):
                 i[0] = "0" + i[0]
-                if c == 0 and (
-                        len(i[0]) == 10 and i[0][0:2].isdigit() and i[0][3:5].isdigit() and i[0][6:].isdigit() and i[0][
-                    2] == "." and i[0][5] == "."):
+                if c == 0 and (len(i[0]) == 10 and i[0][0:2].isdigit() and i[0][3:5].isdigit() and i[0][6:].isdigit() and i[0][2] == "." and i[0][5] == "."):
                     self.date = "0" + self.date
                 else:
                     print("\033[31m ", self.act_val, f"Неверная дата {self.date}")
@@ -128,12 +125,13 @@ class Exel:
             self.ws['U12'] = str(int(money / self.money_at_hour))
             self.ws['Z12'] = str(self.money_at_hour)
         else:
-            self.ws['U12'] = "{Неверные тонны}"
+            self.ws['U12'] = "{Неверные часы}"
             print("\033[31m ", self.act_val, "Сумма не делится на количество денег зарабатываемых в час")
 
         self.ws['AD12'] = str(money) + ',00'
         self.ws['AD14'] = str(money) + ',00'
         self.ws['B17'] = f"Всего оказано услуг 1 на сумму {money},00"
         self.ws['B18'] = self.b12(money)
+        self.ws['F7'] = dicts.organization_dict[self.organization]
         os.chdir(f'C:\\Users\\Ryzhk\\Desktop\\{self.organization} архив')
         self.wb.save(str(self.document_number) + '      ' + self.date + ' Акт №' + str(self.act_val) + '.xlsx')
