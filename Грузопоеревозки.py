@@ -1,9 +1,8 @@
 import class_and_funcs
 import os
-import docx
 import json
 
-class_and_funcs.clear()
+#class_and_funcs.clear()
 os.chdir("C:\\Users\\Ryzhk\\PycharmProjects\\Грузоперевозки\\CargoTransportation")
 organization = input('введите название организации ')
 if organization not in ["Нипигормаш", "Уралвзрывпром", "Байкал"]:

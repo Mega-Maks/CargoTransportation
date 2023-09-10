@@ -4,13 +4,15 @@ import docx
 import openpyxl
 
 
-def clear():
-    os.chdir('C:\\Users\\Ryzhk\\Desktop\\Грузоперевозки')
+"""def clear():
+    now_directory = os.getcwd()
+    os.chdir(f'\\Грузоперевозки')
     try:
         for i in os.listdir():
             os.remove(i)
     except PermissionError:
         print(f"Файл {i} открыт, закрой его")
+    os.chdir(now_directory)"""
 
 
 class Docx:
@@ -133,5 +135,6 @@ class Exel:
         self.ws['B17'] = f"Всего оказано услуг 1 на сумму {money},00"
         self.ws['B18'] = self.b12(money)
         self.ws['F7'] = dicts.organization_dict[self.organization]
+        self.ws['U25'] = dicts.organization_short_dict[self.organization]
         os.chdir(f'C:\\Users\\Ryzhk\\Desktop\\{self.organization} архив')
         self.wb.save(str(self.document_number) + '      ' + self.date + ' Акт №' + str(self.act_val) + '.xlsx')
